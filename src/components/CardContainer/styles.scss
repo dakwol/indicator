@@ -1,0 +1,92 @@
+@use "../../scss/" as *;
+
+.cardSection{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8rem;
+    margin-top: 64rem;
+
+    @include mobile{
+        display: flex;
+        flex-direction: column
+    }
+}
+
+.colItem-1 {
+    grid-column: span 1; /* Растягивается на 1 колонку */
+}
+
+.colItem-2 {
+    grid-column: span 2; /* Растягивается на 2 колонки */
+}
+
+.colItem-3 {
+    grid-column: span 3; /* Растягивается на 3 колонки */
+}
+
+.cardContainer{
+    border-radius: 24rem;
+    position: relative;
+    padding: 32rem;
+    height: 592rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+
+    &:hover{
+        .cardItemHeader{
+            opacity: 1;
+            transform: scale(1);
+        }
+        .contentCard{
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    .cardItemHeader{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        opacity: 0;
+        transform: scale(1.2);
+        transition: .3s ease-in-out;
+
+        .cardItemTag{
+            @include fnt(16, 24, $weight: 500, $color: $gray-800, $font: $PTMono);
+            padding: 0 12rem;
+            background-color: $white;
+            border-radius: 12rem;
+        }
+    }
+
+    .contentCard{
+        display: flex;
+        flex-direction: column;
+        gap: 8rem;
+
+        opacity: 0;
+        transform: scale(1.2);
+        transition: .5s ease-in-out;
+
+        .cardLink{
+            opacity: .66;
+            @include fnt(20, 24, $weight: 500, $color: $white, $font: $PTMono);
+        }
+        .cardTitle{
+            @include fnt(24, 32, $weight: 500, $color: $white, $font: $PTMono);
+        }
+    }
+
+    .cardBg{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        object-fit: cover;
+    }
+}

@@ -1,0 +1,32 @@
+@use "../../scss/" as *;
+
+.lineContainer {
+  width: 100%;
+  background-color: $gray-400;
+  overflow: hidden; 
+  margin-top: 62rem;
+}
+
+.line {
+  display: flex;
+  align-items: center;
+  gap: 32rem;
+  background-color: $gray-400;
+  position: relative;
+  white-space: nowrap;
+  animation: marquee 20s linear infinite;
+  width: 100%;
+
+  .lineText {
+    @include fnt(20, 32, $weight: 700, $font: $PTMono, $color: $gray-700);
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+}
